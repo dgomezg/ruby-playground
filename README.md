@@ -8,4 +8,4 @@ This repository includes the following folders, corresponding to different ruby 
 
 - [`koans`](koans) RubyKoans from https://www.rubykoans.com/
 - [`ruby20minutes`](ruby20minutes) Samples from the "Ruby in 20 minutes" tutorial
-
+- [`exercism`](exercism) exercises solved from Exercism Ruby track(https://exercism.org/tracks/ruby/exercises)
