@@ -29,9 +29,36 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+
+#My solution
 def score(dice)
   # You need to write this method
+  result = 0
+  (1..6).each do |i|
+    count = dice.select {|n| n == i }.size
+    if count >= 3
+      (i == 1) ? result += 1000 : result += i*100
+      count -= 3
+    end
+    if i == 1 || i == 5
+      result += (i==1?100:50) * count
+    end
+  end
+
+  result
 end
+
+#Solution from https://stackoverflow.com/a/6742129
+# def score(dice)
+#   (1..6).collect do |roll|
+#     roll_count = dice.count(roll)
+#     case roll
+#       when 1 : 1000 * (roll_count / 3) + 100 * (roll_count % 3)
+#       when 5 : 500 * (roll_count / 3) + 50 * (roll_count % 3)
+#       else 100 * roll * (roll_count / 3)
+#     end
+#   end.reduce(0) {|sum, n| sum + n} #reduce is a sinonym for .inject
+# end
 
 class AboutScoringProject < Neo::Koan
   def test_score_of_an_empty_list_is_zero
