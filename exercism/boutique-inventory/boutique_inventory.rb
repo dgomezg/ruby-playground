@@ -4,23 +4,28 @@ class BoutiqueInventory
   end
 
   def item_names
-    raise 'Implement the BoutiqueInventory#item_names method'
+    @items.map {|inventory| inventory[:name]}.sort
   end
 
   def cheap
-    raise 'Implement the BoutiqueInventory#cheap method'
+    @items.select {|inventory| inventory[:price] < 30}
   end
 
   def out_of_stock
-    raise 'Implement the BoutiqueInventory#out_of_stock method'
+    @items.select {|inventory| inventory[:quantity_by_size].empty?}
   end
 
   def stock_for_item(name)
-    raise 'Implement the BoutiqueInventory#stock_for_item method'
+    @items.select {|inventory| inventory[:name] == name}[0][:quantity_by_size]
+
   end
 
   def total_stock
-    raise 'Implement the BoutiqueInventory#total_stock method'
+    @items.map {|inventory|
+      inventory[:quantity_by_size].map{|_,stock|
+        stock
+      }.sum
+    }.sum
   end
 
   private
