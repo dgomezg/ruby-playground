@@ -21,11 +21,14 @@ class BoutiqueInventory
   end
 
   def total_stock
-    @items.map {|inventory|
-      inventory[:quantity_by_size].map{|_,stock|
-        stock
-      }.sum
-    }.sum
+    #@items.map {|inventory|
+    #  inventory[:quantity_by_size].map{|_,stock|
+    #    stock
+    #  }.sum
+    #}.sum
+    @items.sum do |item|
+      item[:quantity_by_size].values.sum
+    end
   end
 
   private
