@@ -19,7 +19,11 @@ class Moviegoer
 
   # Popcorn is 🍿
   def claim_free_popcorn!
-    raise NotMovieClubMemberError unless @member
-     "🍿"
+    # Obvious attempt
+    #raise NotMovieClubMemberError unless @member
+    # "🍿"
+
+    # using ternary would be like
+    @member? "🍿" : (raise NotMovieClubMemberError)
   end
 end
