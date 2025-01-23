@@ -9,13 +9,17 @@ class HighScores
   end
 
   def personal_best
-    @scores.sort.last
+    #@scores.sort.last
+    # Improvement after checking Community solutions
+    scores.max
   end
   def personal_top_three
-    @scores.sort.reverse.take(3)
+    #@scores.sort.reverse.take(3)
+    # Improvement after checking Community solutions
+    scores.max(3)
   end
 
   def latest_is_personal_best?
-    @scores.last == personal_best
+    latest == personal_best
   end
 end
