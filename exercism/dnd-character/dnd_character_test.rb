@@ -110,8 +110,8 @@ class DndCharacterTest < Minitest::Test
         first = character.send(attribute)
         second = character.send(attribute)
 
-        assert_equal first, second,
-          informative_message % { attribute:, first:, second: }
+        assert_equal first, second
+          #informative_message % { attribute:, first:, second: }
       end
     end
     # rubocop:enable Style/FormatString, Style/RedundantPercentQ

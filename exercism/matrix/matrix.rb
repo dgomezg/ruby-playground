@@ -1,7 +1,19 @@
-=begin
-Write your code for the 'Matrix' exercise in this file. Make the tests in
-`matrix_test.rb` pass.
+class Matrix
 
-To get started with TDD, see the `README.md` file in your
-`ruby/matrix` directory.
-=end
+  def initialize(input)
+    @matrix = []
+    input.split("\n").each do |row|
+      @matrix.push( row.split(' ').map(&:to_i))
+    end
+  end
+
+  def row(index)
+    @matrix[index-1]
+  end
+
+  def column(index)
+    # Which option is better?
+    #@matrix.map { |row| row[index-1] }
+    @matrix.transpose[index-1]
+  end
+end
