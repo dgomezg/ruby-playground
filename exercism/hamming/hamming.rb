@@ -1,7 +1,9 @@
-=begin
-Write your code for the 'Hamming' exercise in this file. Make the tests in
-`hamming_test.rb` pass.
+module Hamming
+  def self.compute(str1, str2)
+    raise ArgumentError if str1.length != str2.length
 
-To get started with TDD, see the `README.md` file in your
-`ruby/hamming` directory.
-=end
+    str1.chars.select.each_with_index do |val, idx|
+      val != str2[idx]
+    end.count
+  end
+end
