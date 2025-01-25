@@ -1,7 +1,36 @@
-=begin
-Write your code for the 'Clock' exercise in this file. Make the tests in
-`clock_test.rb` pass.
+class Clock
+  attr_reader :hour, :minute
+  def initialize(hour: 0, minute: 0)
+    @hour = (hour + (minute / 60)) % 24
+    @minute = minute % 60
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/clock` directory.
-=end
+  def to_s
+    "%02d:%02d" % [@hour, @minute]
+  end
+
+  def +(other)
+    raise ArgumentError unless other.is_a?(Clock)
+
+    total_minutes = @minute + (other.hour * 60) + other.minute
+    @hour =  (hour + total_minutes / 60) % 24
+    @minute = total_minutes % 60
+
+    self
+  end
+
+  def -(other)
+    raise ArgumentError unless other.is_a?(Clock)
+
+    minutes = (@hour * 60 + @minute) - (other.hour*60 + other.minute)
+    @hour = (minutes / 60) % 24
+    @minute = minutes % 60
+
+    self
+  end
+
+  def ==(other)
+    raise ArgumentError unless other.is_a?(Clock)
+    @hour == other.hour && @minute == other.minute
+  end
+end
