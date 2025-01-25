@@ -1,7 +1,15 @@
-=begin
-Write your code for the 'Luhn' exercise in this file. Make the tests in
-`luhn_test.rb` pass.
-
-To get started with TDD, see the `README.md` file in your
-`ruby/luhn` directory.
-=end
+module Luhn
+  def self.valid?(number)
+    if !number.scan(/[^\d\s]/).empty?
+      return false
+    end
+    numbers = number.scan(/\d/).reverse.map(&:to_i)
+    if numbers.size > 1
+      numbers.map.with_index do |n, index|
+        index.even? ? n : n * 2 > 9 ? (n * 2) - 9: n * 2
+      end.sum % 10 == 0
+    else
+      false
+    end
+  end
+end
