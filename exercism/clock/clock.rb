@@ -12,21 +12,13 @@ class Clock
   def +(other)
     raise ArgumentError unless other.is_a?(Clock)
 
-    total_minutes = @minute + (other.hour * 60) + other.minute
-    @hour =  (hour + total_minutes / 60) % 24
-    @minute = total_minutes % 60
-
-    self
+    Clock.new(hour: @hour + other.hour, minute: @minute + other.minute)
   end
 
   def -(other)
     raise ArgumentError unless other.is_a?(Clock)
 
-    minutes = (@hour * 60 + @minute) - (other.hour*60 + other.minute)
-    @hour = (minutes / 60) % 24
-    @minute = minutes % 60
-
-    self
+    Clock.new(hour: @hour - other.hour, minute: @minute - other.minute)
   end
 
   def ==(other)
