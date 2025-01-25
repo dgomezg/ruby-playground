@@ -1,7 +1,15 @@
-=begin
-Write your code for the 'Series' exercise in this file. Make the tests in
-`series_test.rb` pass.
+class Series
+  def initialize(string)
+    raise ArgumentError if string.empty?
+    @string = string.chars
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/series` directory.
-=end
+  def slices(length)
+    raise ArgumentError unless
+      length.integer? && length.between?(1,@string.length)
+
+    @string[0..-length].map.each_with_index do |_, i|
+      @string[i..(i + length -1)].join
+    end
+  end
+end
