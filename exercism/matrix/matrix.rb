@@ -1,9 +1,12 @@
 class Matrix
 
-  def initialize(input)
-    @matrix = []
-    input.split("\n").each do |row|
-      @matrix.push( row.split(' ').map(&:to_i))
+  def initialize(lines_w_numbers)
+    #@matrix = []
+    #lines_w_numbers.split("\n").each do |row|
+    #  @matrix.push( row.split(' ').map(&:to_i))
+    #end
+    @matrix = lines_w_numbers.each_line.map do |line|
+       line.scan(/\d+/).map(&:to_i)
     end
   end
 
