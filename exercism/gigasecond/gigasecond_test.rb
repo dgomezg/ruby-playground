@@ -8,7 +8,6 @@ class GigasecondTest < Minitest::Test
   end
 
   def test_full_time_with_day_roll_over
-    skip
     assert_equal Time.utc(2046, 10, 3, 1, 46, 39), Gigasecond.from(Time.utc(2015, 1, 24, 23, 59, 59))
   end
 end
