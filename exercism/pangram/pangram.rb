@@ -1,7 +1,6 @@
-=begin
-Write your code for the 'Pangram' exercise in this file. Make the tests in
-`pangram_test.rb` pass.
+module Pangram
 
-To get started with TDD, see the `README.md` file in your
-`ruby/pangram` directory.
-=end
+  def self.pangram?(phrase)
+    phrase.downcase.gsub(/[^a-z]/, '').chars.uniq.sort === ('a'..'z').to_a
+  end
+end
