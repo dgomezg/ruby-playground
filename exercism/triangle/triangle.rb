@@ -18,10 +18,9 @@ class Triangle
 
   private
   def is_a_triangle?
-    @sides.reject {|a| a <= 0}.size == 3 &&
-      @sides[0] + @sides[1] >= @sides[2] &&
-      @sides[1] + @sides[2] >= @sides[0] &&
-      @sides[2] + @sides[0] >= @sides[1]
+    @sides.all?(&:positive?) &&
+      @sides.size == 3 &&
+      @sides.permutation(3).all? { |(a, b, c)| a <= b + c }
   end
 
 end
