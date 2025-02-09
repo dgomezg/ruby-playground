@@ -1,7 +1,24 @@
-=begin
-Write your code for the 'Sum Of Multiples' exercise in this file. Make the tests in
-`sum_of_multiples_test.rb` pass.
+class SumOfMultiples
+  def initialize(*numbers)
+    @numbers = numbers
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/sum-of-multiples` directory.
-=end
+  def to(limit)
+    @numbers.map { |number| expand_into_multiples(number, limit)  }
+            .flatten
+            .uniq
+            .sum
+  end
+
+  private
+  def expand_into_multiples(root, up_to)
+    result = []
+    next_multiple = root
+    while root > 0 && next_multiple < up_to
+      result << next_multiple
+      next_multiple += root
+    end
+    result
+  end
+
+end
