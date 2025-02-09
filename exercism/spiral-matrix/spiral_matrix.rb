@@ -9,6 +9,7 @@ class SpiralMatrix
     while count <= matrix_size ** 2
       @matrix[row][column] = count
 
+      #check if we need to change direction
       if (directions[0] == :right && (column +1 == matrix_size || @matrix[row][column+1] != 0)) ||
          (directions[0] == :down  && (row +1 == matrix_size || @matrix[row+1][column] != 0)) ||
          (directions[0] == :left  && (column == 0 || @matrix[row][column -1] != 0)) ||
