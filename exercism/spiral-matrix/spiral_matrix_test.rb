@@ -3,21 +3,18 @@ require_relative 'spiral_matrix'
 
 class SpiralMatrixTest < Minitest::Test
   def test_empty_spiral
-    # skip
     spiral = SpiralMatrix.new(0).matrix
     expected = []
     assert_equal expected, spiral
   end
 
   def test_trivial_spiral
-    skip
     spiral = SpiralMatrix.new(1).matrix
     expected = [[1]]
     assert_equal expected, spiral
   end
 
   def test_spiral_of_size_2
-    skip
     spiral = SpiralMatrix.new(2).matrix
     expected = [
       [1, 2],
@@ -27,7 +24,6 @@ class SpiralMatrixTest < Minitest::Test
   end
 
   def test_spiral_of_size_3
-    skip
     spiral = SpiralMatrix.new(3).matrix
     expected = [
       [1, 2, 3],
@@ -38,7 +34,6 @@ class SpiralMatrixTest < Minitest::Test
   end
 
   def test_spiral_of_size_4
-    skip
     spiral = SpiralMatrix.new(4).matrix
     expected = [
       [1, 2, 3, 4],
@@ -50,7 +45,6 @@ class SpiralMatrixTest < Minitest::Test
   end
 
   def test_spiral_of_size_5
-    skip
     spiral = SpiralMatrix.new(5).matrix
     expected = [
       [1, 2, 3, 4, 5],
