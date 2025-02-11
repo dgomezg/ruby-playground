@@ -1,7 +1,28 @@
-=begin
-Write your code for the 'Transpose' exercise in this file. Make the tests in
-`transpose_test.rb` pass.
+module Transpose
 
-To get started with TDD, see the `README.md` file in your
-`ruby/transpose` directory.
-=end
+  def self.transpose(input)
+    lines = input.split("\n")
+    longest = lines.map(&:length).max || 0
+
+    padding_array = [nil] * longest
+    equal_length_arrays = lines.map { |line| (line.chars + padding_array).take(longest) }
+
+    # Transpose.
+    transposed = equal_length_arrays.transpose
+    # strip trailing nils (remove right padding)
+    no_trailing_nils = transposed.map { |row| row.reverse.drop_while(&:nil?).reverse }
+    # replace remaining nils with spaces (add left padding)
+    correctly_padded = no_trailing_nils.map { |row| row.map { |c| c.nil? ? ' ' : c } }
+    # turn it back into a string
+    correctly_padded.map(&:join).join("\n")
+  end
+  def self.my_transpose(input)
+    if input.empty?
+      return input
+    end
+    matrix = input.split("\n")
+    maxlength = matrix.map { | row | row.length }.max
+    matrix.map! { | row | row.ljust(maxlength) }
+    matrix.map(&:chars).transpose.map(&:join).join("\n")
+  end
+end
