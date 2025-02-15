@@ -1,7 +1,17 @@
-=begin
-Write your code for the 'Grains' exercise in this file. Make the tests in
-`grains_test.rb` pass.
+module Grains
+  def self.square(n)
+    raise ArgumentError if n < 1 || n > 64
+    result = 1
+    count = 1
+    while count < n
+      result *= 2
+      count += 1
+    end
+    result
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/grains` directory.
-=end
+  def self.total
+    (1..64).map { |n| self.square(n) }
+           .reduce(:+)
+  end
+end
