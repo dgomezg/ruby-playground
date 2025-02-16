@@ -4,6 +4,7 @@ class RunningWeek
 
   attr_reader :runs
   def initialize(week, runs)
+    raise ArgumentError, 'Day is not Monday' unless week.wday == 1
     @week = week
     @runs = runs
   end
